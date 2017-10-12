@@ -105,6 +105,7 @@ import (
 // }
 
 // Exercises:
+//
 // func sum(xs []int) int
 
 // func half(x int) (int, bool) {
@@ -142,16 +143,58 @@ import (
 //  fmt.Println(nextOdd()) // 5
 // }
 
-func fib(n int) int {
-	switch n {
-	case 0:
-		return 0
-	case 1:
-		return 1
-	default:
-		return fib(n-1) + fib(n-2)
-	}
+// func fib(n int) int {
+// 	switch n {
+// 	case 0:
+// 		return 0
+// 	case 1:
+// 		return 1
+// 	default:
+// 		return fib(n-1) + fib(n-2)
+// 	}
+// }
+// func main() {
+// 	fmt.Println(fib(1))
+// }
+
+// // Recover from a runtime panic:
+// func main() {
+// 	defer func() {
+// 		str := recover()
+// 		fmt.Println(str)
+// 	}() // anonymous function call required or else panic is never executed
+// 	panic("PANIC!")
+// }
+
+// // Get mem address of variable:
+// x = (&y)
+// // Assign value to pointer:
+// *x = 5
+// // Create a new pointer:
+// x = new(int)
+
+// // Value of x for this program:
+// func square(x *float64) {
+// 	*x = *x * *x
+// }
+// func main() {
+// 	x := 1.5
+// 	square(&x) // x is 2.25
+// }
+
+// Program to swap two integers:
+// (x := 1; y := 2; swap(&x, &y) should give you x=2 and y=1)
+func swap(xPtr *int, yPtr *int) {
+	*xPtr, *yPtr = *yPtr, *xPtr
 }
 func main() {
-	fmt.Println(fib(1))
+	x := 1
+	y := 2
+	swap(&x, &y)
+	fmt.Println(x, y)
 }
+
+// // Official answer:
+// func swap(x, y *int) {
+//     *x, *y = *y, *x
+// }
