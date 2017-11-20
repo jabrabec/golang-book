@@ -1,11 +1,14 @@
 package main
 
 import (
-	"errors"
-	// "fmt"
+	// "container/list"
+	// "errors"
+	"fmt"
 	// "io/ioutil"
+	"hash/crc32"
 	// "os"
 	// "path/filepath"
+	// "sort"
 	// "strings"
 )
 
@@ -154,6 +157,75 @@ import (
 // Errors
 
 // create a new error type:
+// func main() {
+// 	err := errors.New("error message")
+// }
+
+// Containers and Sort:
+
+// func main() {
+//     // create empty linked list; zero value is []
+// 	var x list.List
+//     // append to list:
+// 	x.PushBack(1)
+// 	x.PushBack(2)
+// 	x.PushBack(3)
+
+// 	for e := x.Front(); e != nil; e = e.Next() {
+// 		fmt.Println(e.Value.(int))
+// 	}
+// }
+
+// // Implement our own data and types to manipulate; "sort.Interface requires
+// // three methods: Len, Less, and Swap"
+// type Person struct {
+// 	Name string
+// 	Age  int
+// }
+
+// // type ByName []Person
+
+// // func (ps ByName) Len() int {
+// // 	return len(ps)
+// // }
+// // func (ps ByName) Less(i, j int) bool {
+// // 	return ps[i].Name < ps[j].Name
+// // }
+// // func (ps ByName) Swap(i, j int) {
+// // 	ps[i], ps[j] = ps[j], ps[i]
+// // }
+
+// // Define our own sort (first example sorted by name):
+// type ByAge []Person
+
+// func (this ByAge) Len() int {
+// 	return len(this)
+// }
+// func (this ByAge) Less(i, j int) bool {
+// 	return this[i].Age < this[j].Age
+// }
+// func (this ByAge) Swap(i, j int) {
+// 	this[i], this[j] = this[j], this[i]
+// }
+
+// func main() {
+// 	kids := []Person{
+// 		{"Jill", 9},
+// 		{"Jack", 10},
+// 	}
+// 	// sort.Sort(ByName(kids))
+// 	sort.Sort(ByAge(kids))
+// 	fmt.Println(kids)
+// }
+
+// Hashes and Cryptography:
+
 func main() {
-	err := errors.New("error message")
+	// create a hasher
+	h := crc32.NewIEEE()
+	// write our data to it
+	h.Write([]byte("test"))
+	// calc the crc32 checksum
+	v := h.Sum32()
+	fmt.Println(v)
 }
